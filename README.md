@@ -8,6 +8,9 @@ Database as a service
 - Open data support: We have changed the GDPR implementing regulation in the Czech Republic, support us to change the GDPR itself and protect open data and technology development in the EU.
 - Job Vacancies: Search and advertise job vacancies in the largest database (of job vacancies) in the Czech Republic.
 
+## Page
+![Screenshot (12624)](https://github.com/lexycole/Database-as-a-service/assets/40228505/3dc0a6a6-3bac-479b-bac5-ba8f529d34ca)
+
 
 ## Development
 ### Getting Started
