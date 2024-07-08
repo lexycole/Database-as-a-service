@@ -1,0 +1,192 @@
+//company
+
+### Company autocomplete by name and category
+GET {{url}}/autocompleteList?q={"term":"dho","category":"firm","countryCode":"cz"}
+Accept: application/json
+
+### Company autocomplete by name and city
+GET {{url}}/firmAutocompleteList?q={"term":"vetr","countryCode":"cz","city":" {{cityId}} "}
+Accept: application/json
+
+### Company advenced search
+GET {{url}}/advancedSearch?q={"term":"gavend","countryCode":"cz","searchInactive":true,"category":"firm","city":" {{cityId}} "}
+
+### Company detail
+GET {{url}}/firmDetail?q={"uid": " {{dhoUid}} "}
+Accept: application/json
+
+### Similar companies
+GET {{url}}/similarFirmList?q={"uid": " {{dhoUid}} "}
+Accept: application/json
+
+### Testing List of Companies -- TEST
+GET {{url}}/firmResult
+Accept: application/json
+
+//person
+### Company person detail
+GET {{url}}/personDetail?q={"id":" {{ personId }}"}
+Accept: application/json
+
+//top search
+
+### Top search firm by country
+GET {{url}}/topSearchFirm?q={"countryCode":"cz"}
+Accept: application/json
+
+### Top search person by country
+GET {{url}}/topSearchPerson?q={"countryCode":"cz"}
+Accept: application/json
+
+### Top search phone by country
+GET {{url}}/topSearchPhone?q={"countryCode":"cz"}
+Accept: application/json
+
+### Latest phone
+GET {{url}}/latestPhone?q={"countryCode":"cz"}
+Accept: application/json
+
+//product
+
+### Product detail
+//Incomplete
+GET {{url}}/productDetail?q={"id":"e533ffadd1e3bb122cac6300493ae77c2"}
+Accept: application/json
+
+### Product autocomplete
+//Incomplete
+GET {{url}}/productAutocompleteList?q={"term":"spoj"}
+Accept: application/json
+
+//phone
+
+### Phone detail
+GET {{url}}/phoneDetail?q={"phone":"420602647811","countryCode":"cz"}
+Accept: application/json
+
+### Phone autocomplete
+GET {{url}}/phoneAutocompleteList?q={"term":"647811"}
+Accept: application/json
+
+### Phone comment form options
+GET {{url}}/phoneCommentFormOptions
+Accept: application/json
+
+//article
+
+### Article 10 - General Terms and Conditions
+GET {{url}}/articleDetail?q={"id":"h~gl9avmeG1v"}
+Accept: application/json
+
+### Article 12 -  Privacy Policy
+GET {{url}}/articleDetail?q={"id":"h~JX7ax9byv4"}
+Accept: application/json
+
+//locality
+
+### Locality autocomplete - region, district, city
+GET {{url}}/localityAutocomplete?q={"countryCode":"cz","term":"plze"}
+Accept: application/json
+
+
+//package of companies
+
+### Package of companies - economic activity data
+GET {{url}}/packageEconomicData?q={"countryCode":"cz"}
+Accept: application/json
+
+### Package of companies data
+GET {{url}}/packageData?q={"countryCode":"cz"}
+Accept: application/json
+
+### Calulate package of companies
+// incomplete
+POST {{url}}/packageCalculate
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+
+{
+    "packageFilter": {
+        "countryCode": "CZ",
+        "contactType": [
+            "email"
+        ],
+        "revenue": [],
+        "workerCount": [],
+        "locality": [
+            "e6bed73a9e4db8c552a739dc2186eca1b",
+            "e1e25a4a38e98ebc862cf9f8a9a8a8637",
+            "efbb048685153ad3b122e7322ec2a97d6",
+            "e00c20b4faf3efd2f1ec587e227f073bc",
+            "e8edea93a0a4714bb9215ff8476626492",
+            "ecb0f9e7166324fbb4b085f42a8e5b6e3",
+            "e255035a0775a459f75c5147366100298",
+            "e0087d39ff51c5ca947d53006c8c89ce2"
+        ],
+        "addressType": [
+            "register"
+        ],
+        "legalForm": [],
+        "economicActivity": []
+    }
+}
+
+
+### Send package of companies inquiry
+//incomplete
+POST {{url}}/sendPackageInquiry
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+
+{
+    "countryCode" : "CZ",
+    "email" : "zurek@logbookie.eu",
+    "isCompany" : false,
+    "packageFilter": {
+        "countryCode": "CZ",
+        "contactType": [
+            "email"
+        ],
+        "revenue": [],
+        "workerCount": [],
+        "locality": [
+            "e6bed73a9e4db8c552a739dc2186eca1b",
+            "e1e25a4a38e98ebc862cf9f8a9a8a8637",
+            "efbb048685153ad3b122e7322ec2a97d6",
+            "e00c20b4faf3efd2f1ec587e227f073bc",
+            "e8edea93a0a4714bb9215ff8476626492",
+            "ecb0f9e7166324fbb4b085f42a8e5b6e3",
+            "e255035a0775a459f75c5147366100298",
+            "e0087d39ff51c5ca947d53006c8c89ce2"
+        ],
+        "addressType": [
+            "register"
+        ],
+        "legalForm": [],
+        "economicActivity": []
+    }
+}
+
+
+### Lost password
+// incomplete
+
+### New password
+// incomplete
+
+### Registration
+// incomplete
+POST {{url}}/registration
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+
+{
+    "countryCode" : "CZ",
+    "email" : "lojza@logbookie.eu",
+    "password": "lojza@logbookie.eu",
+    "isCompany" : false
+}
+
+
+
+

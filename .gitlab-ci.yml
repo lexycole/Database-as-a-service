@@ -1,0 +1,114 @@
+#default:
+# image: igloonet/php:7.4
+#  tags:
+#    - dind
+
+# Cache libraries in between jobs
+cache: &global_cache
+  key: $CI_COMMIT_REF_SLUG
+  paths:
+    - .yarn
+    - .next/cache/
+  policy: pull-push
+  when: 'always'
+  untracked: true
+
+
+stages:
+  - Build staging
+  - Quality Tools
+  - Deploy staging
+  - Production
+
+.setup_ssh:
+  before_script:
+    - echo "Setting SSH for deploy"
+    # install ssh-agent if missing
+    - "which ssh-agent || ( apt-get update -y && apt-get install -y openssh-client )"
+    # launch ssh-agent
+    - eval $(ssh-agent -s)
+    # add deploy key to agent
+    - echo "$DEPLOYMENT_PRODUCTION_KEY" | base64 -d | ssh-add -
+    # setup known_hosts
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo "berry.logbookie.eu ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJYctJ14i7gUaddyAO+w/hOwQYo+XxMXdHW73RLQ08AR" >> ~/.ssh/known_hosts
+    - echo "berry-b.logbookie.eu ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIvVcX6FLbxXtlAbUmH/DonLO2DGftNjSb+rdTwa77Lp" >> ~/.ssh/known_hosts
+    - echo "berry-c.logbookie.eu ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA3+WgU8onMAtbCXUwPtMtUxAThUi22bBXJyOQyF+nyg" >> ~/.ssh/known_hosts
+
+Staging Build:
+  stage: Build staging
+  script:
+    - echo "Building staging"
+    - yarn install
+    - yarn run build
+  artifacts:
+    paths:
+      - .next
+    #    - .next/server
+    #    - .next/static-
+    expire_in: 1 day
+
+
+Eslint:
+  stage: Quality Tools
+  script:
+    - yarn eslint . --ext .ts,.tsx
+  allow_failure: true
+
+Staging deployment:
+  extends: .setup_ssh
+  stage: Deploy staging
+  script:
+    - echo "Deploy to staging server"
+    # berry portaltest
+    - ssh www-crm@berry.logbookie.eu "cd /domains/expanzo.com/web/portaltest && git fetch"
+    - ssh www-crm@berry.logbookie.eu "cd /domains/expanzo.com/web/portaltest && git checkout $CI_COMMIT_SHA"
+    - ssh www-crm@berry.logbookie.eu "cd /domains/expanzo.com/web/portaltest && yarn install"
+
+    # sync js berry
+    #    - rsync -av --delete --delete-excluded --exclude='/cache/' www-crm@berry.logbookie.eu:/domains/expanzo.com/web/portaltest/.next/
+    - rsync -av --delete .next/ www-crm@berry.logbookie.eu:/domains/expanzo.com/web/portaltest/.next/
+    - rsync -av --delete .yarn/ www-crm@berry.logbookie.eu:/domains/expanzo.com/web/portaltest/.yarn/
+  artifacts:
+    paths:
+      - .next
+    #    - .next/server
+    #    - .next/static
+    expire_in: 1 day
+  environment:
+    name: staging
+    url: https://portaltest.expanzo.com/
+  only:
+    - master
+  cache:
+    # inherit all global cache settings
+    <<: *global_cache
+    # override the policy
+    policy: pull
+
+Production build & deploy:
+  extends: .setup_ssh
+  stage: Production
+  script:
+    - yarn install
+    # - yarn install
+  #    - cd submodule/core && yarn install && yarn run production && cd -
+  #    - yarn run production
+  #    - rsync -a submodule/core/js/dist/ www-crm@berry.logbookie.eu:/domains/expanzo.com/web/crm/submodule/core/
+  #    - rsync -a user_js/dist/ www-crm@berry.logbookie.eu:/domains/expanzo.com/web/crm/
+  #    - rsync -a submodule/core/js/dist/ www-crm@berry-b.logbookie.eu:/domains/expanzo.com/web/crm/submodule/core/
+  #    - rsync -a user_js/dist/ www-crm@berry-b.logbookie.eu:/domains/expanzo.com/web/crm/
+  environment:
+    name: production
+    url: https://portal.expanzo.com/
+  when: manual
+  only:
+    - master
+  artifacts:
+    expire_in: 7 day
+  cache:
+    # inherit all global cache settings
+    <<: *global_cache
+    # override the policy
+    policy: pull    

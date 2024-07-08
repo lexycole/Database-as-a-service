@@ -1,0 +1,26 @@
+import { LangSection } from '@/lang/Lang';
+
+export const SearchCS: LangSection = {
+  title: `Hledání`,
+  searchTitle: `NEJVĚTŠÍ VOLNĚ DOSTUPNÁ SVĚTOVÁ DATABÁZE FIREM V ČR`,
+  categoryLabel: 'Kategorie',
+  categoryAll: `Vše`,
+  categoryFirm: `Firmy`,
+  categoryPhone: `Telefony`,
+  categoryProduct: `Produkty`,
+  searchButton: `Hedat`,
+  searchFieldLabel: `Zadejte hledaný výraz`,
+  searchFieldPlaceholderAll: `Zadejte hledaný výraz ...`,
+  searchFieldPlaceholderFirm: `Hledej firmu podle názvu, IČ, telefonu ...`,
+  searchFieldPlaceholderPhone: `Hledej telefon ...`,
+  searchFieldPlaceholderProduct: `Hledej produkt ...`,
+  chooseCountry: `Zvolte zemi`,
+  searchLocality: `Zvolte místo`,
+  localityPlaceholder: `Region`,
+  searchResult: `Seznam výsledků pro `,
+  showAllRows: `Zobrazit všechny`,
+  emptyResult: `Na Vámi zadaný výraz nebylo bohužel nic nalezeno.`,
+  listStyleRows: `Režim zobrazení - řádky`,
+  listStyleTile: `Režim zobrazení - dlaždice`,
+  listStyleTileSmall: `Režim zobrazení - dlaždice malé`,
+};

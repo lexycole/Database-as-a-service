@@ -1,0 +1,36 @@
+import { LangSection } from '@/lang/Lang';
+
+export const DatabaseFirmEN: LangSection = {
+  title: `Database of companies EXPANZO.COM`,
+  description: `Expanzo.com is a free and open database of Czech and foreign companies provided in the public interest. Used for presentation,
+    screening companies to prevent fraud and direct marketing. The database contains more than 52 million companies, the source of the database is open data provided
+ authorities, state authorities, companies and the users of the server themselves.`,
+  whyChooseOurDatabase: `Why should you choose our company database?`,
+  present: `Present your company for free`,
+  search: `Search and examine companies`,
+  increaseResults: `Increase results by using your CRM`,
+  expand: `Expand worldwide`,
+  fromAllCountries: `Database of companies from more than 235 countries`,
+  fromAllCountriesDescription: `Czech Republic, UDS, Germany, United Kingdom, Canada, Australia, Switzerland, Netherlands, Belgium, Austria, France, Denmark,
+  Colombia, Norway, Latvia, Italy, Mexico, Hong Kong, Brazil, Japan, Singapore, New Zealand, Finland, Turkey and more`,
+  databaseFirmContains: `The database contains more than`,
+  countWorld: `companies worldwide`,
+  countCzech: `active Czech companies`,
+  countRevenue: `companies with revenue`,
+  countPhone: `with phone worldwide`,
+  countWww: `websites worldwide`,
+  countCountry: `countries`,
+  countWorkerCount: `companies with number of employees`,
+  databaseFirmBenefits: `Benefits of our database`,
+  databaseFirmBenefits1: `increase the efficiency of your sales department`, // u všech těch benefits by možná mělo být předtím slovíčko will kvůli budoucímu času
+  databaseFirmBenefits2: `Facilitate search and contact of new customers`,
+  databaseFirmBenefits3: `help with marketing research`,
+  databaseFirmBenefits4: `save time`,
+  databaseFirmBenefits5: `allow you to top your business on selected keywords`,
+  databaseFirmBenefits6: `help with the right decision`,
+  databaseFirmBenefits7: `prevent losses from transactions with unreliable entities`,
+  databaseFirmBenefits8: `help increase the company's turnover and profit`,
+  databaseFirmBenefits9: `presents the company in the world's largest database of companies in the Czech Republic`,
+  registration: `Registration`,
+  inquiry: `Company database inquiry`,
+};

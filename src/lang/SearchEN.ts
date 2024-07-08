@@ -1,0 +1,26 @@
+import { LangSection } from '@/lang/Lang';
+
+export const SearchEN: LangSection = {
+  title: `Search`,
+  searchTitle: `The largest available worldwide business database in the Czech Republic`,
+  categoryLabel: 'Category',
+  categoryAll: `All`,
+  categoryFirm: `Companies`,
+  categoryPhone: `Phones`,
+  categoryProduct: `Products`,
+  searchButton: `Search`,
+  searchFieldLabel: `Enter a search term`,
+  searchFieldPlaceholderAll: `Search an company, phone ...`,
+  searchFieldPlaceholderFirm: `Search for a company by name, ID number, phone number...`,
+  searchFieldPlaceholderPhone: `Hledej telefon ...`,
+  searchFieldPlaceholderProduct: `Hledej produkt ...`,
+  chooseCountry: `Choose country`,
+  searchLocality: `Search locality`,
+  localityPlaceholder: `Region`,
+  searchResult: `Seznam výsledků pro `,
+  showAllRows: `Zobrazit všechny`,
+  emptyResult: `Na Vámi zadaný výraz nebylo bohužel nic nalezeno.`,
+  listStyleRows: `Režim zobrazení - řádky`,
+  listStyleTile: `Režim zobrazení - dlaždice`,
+  listStyleTileSmall: `Režim zobrazení - dlaždice malé`,
+};

@@ -1,0 +1,28 @@
+// new API project https://api.expanzo.com
+
+
+### List of countries that contain companies
+GET {{newApiUrl}}/firm/country/firmCountry
+Content-Type: application/json
+Origin: http://localhost:3000
+Content-Type: application/json
+
+### List of all countries
+GET {{newApiUrl}}/locality/country/localityCountry
+Origin: http://localhost:3000
+Content-Type: application/json
+
+### Number of firms in countries
+GET {{newApiUrl}}/firm/countryCount/firmCountryCount
+Origin: http://localhost:3000
+Content-Type: application/json
+
+### Number of firms in countries
+GET {{newApiUrl}}/firm/countryCount/firmCountryCountSum
+Origin: http://localhost:3000
+Content-Type: application/json
+
+### Company name by identification number
+GET {{newApiUrl}}/firm/name/firmName?countryCode=cz&idNumber=28446542
+Origin: http://localhost:3000
+Content-Type: application/json

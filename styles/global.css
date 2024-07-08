@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  scroll-behavior: smooth;
+}
+
+*::-webkit-scrollbar {
+  width: 13px;
+}
+
+*::-webkit-scrollbar-track {
+  border-radius: 13px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(133, 128, 106, 0.74);
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  body {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  body {
+    font-size: 20px;
+  }
+}
+
+@layer utilities {
+  /* Headers */
+  h1 {
+    @apply text-[2.2rem] font-[700];
+  }
+  h2 {
+    @apply text-[1.9rem] font-[700];
+  }
+  h3 {
+    @apply text-[1.6rem] font-[700];
+  }
+  h4 {
+    @apply text-[1.2rem] font-[600];
+  }
+  h5 {
+    @apply text-[1rem] font-[600];
+  }
+  h6 {
+    @apply text-[.9rem] font-[600];
+  }
+}
+
+/* util classes */
+
+.flex-center {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-center-column {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}

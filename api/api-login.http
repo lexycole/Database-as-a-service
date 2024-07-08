@@ -1,0 +1,46 @@
+
+#request token - replaces session - is sent with each API query (limited validity 5 min)
+#login token - used for renew
+
+
+### Login request
+# response example
+#{
+#	"requestToken": {
+#		"token": "token62570296099317.67859309",
+#		"expiration": 1649869762.0
+#	},
+#	"loginToken": {
+#		"token": "token62570296067a41.82114800",
+#		"expiration": 1650474262.0
+#	}
+#}
+
+POST {{newApiUrl}}/login
+Content-Type: application/json
+
+{
+    "login": "zurek2@logbookie.eu",
+	"password": "zurek2@logbookie.eu"
+}
+
+
+### renew request token - use LoginToken from login response (HTTP 200 if OK, 401 if invalid LoginToken) ,same response as login
+POST {{newApiUrl}}/token/renew
+Dho-Login-Token: token62570296067a41.82114800
+
+### logout - use RequestToken from login response (HTTP 200 if OK, 401 if invalid RerquestToken)
+POST {{newApiUrl}}/logout
+Dho-Request-Token: token6255174aab6b38.97437962
+
+### user info after login - use RequestToken from login response (HTTP 200 if OK, 401 if invalid RerquestToken)
+GET {{newApiUrl}}/currentUser
+Accept: application/json
+#Dho-User-Token: dCG8jQLCwab0Lh9SKwvh3GJPbjeKCkOt
+Dho-Request-Token: token626a5fd81c6c84.21812739
+
+### account info - use RequestToken from login response (HTTP 200 if OK, 401 if invalid RerquestToken)
+GET {{newApiUrl}}/account/accountDetail
+Accept: application/json
+#Dho-User-Token: dCG8jQLCwab0Lh9SKwvh3GJPbjeKCkOt
+Dho-Request-Token: token627bdd9cd79370.06505847

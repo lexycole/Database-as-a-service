@@ -1,0 +1,3 @@
+[submodule "src/submodule/Dho/Ui"]
+	path = src/submodule/Dho/Ui
+	url = ../../dho/ui.git
